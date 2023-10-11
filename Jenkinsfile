@@ -20,5 +20,10 @@ pipeline {
                 }
             }
         }
+        stage('deploy') {
+            steps {
+                echo 'deploy will initiate after build and test'
+            }
+        }
     }
 }
