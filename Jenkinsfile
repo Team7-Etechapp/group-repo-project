@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('checkout-code') {
+        stage('version-control') {
             steps {
-               echo 'checking code from Git'
+                checkout ([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'etechapp-id', url: 'https://github.com/Team7-Etechapp/group-repo-project.git']]])
             }
         }
-        stage('parallel') {
+        stage('parallel-job') {
             parallel {
                 stage('build') {
                     steps {
